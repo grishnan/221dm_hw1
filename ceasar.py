@@ -1,16 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-alphabet = [chr(i) for i in range(1072, 1109)] # алфавит
-length = len(alphabet) # мощность алфавита
+codetable = [chr(i) for i in range(1072, 1109)]
 
 text = input("Введите исходный текст: ")
 key = int(input("Введите ключ шифрования: "))
 
-textcode = [alphabet.index(symbol) for symbol in text] # исходный текст в кодовом представлении
-cyphercode = [(value + key) % length for value in textcode]
+codetext = [codetable.index(sym) for sym in text]
+codecypher = [(c + key) % 37 for c in codetext]
 
-cypher = ""
-for c in cyphercode:
-  cypher += alphabet[c]
-
-print("Шифровка: ", cypher)
+cypher = ''.join([codetable[c] for c in codecypher])
+print("Шифр: ", cypher)
